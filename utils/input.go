@@ -4,9 +4,10 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"strings"
 )
 
-func ReadInputFile(file string) []int64 {
+func ReadIntInputFile(file string) []int64 {
 	f, _ := os.Open(file)
 	defer f.Close()
 
@@ -19,4 +20,17 @@ func ReadInputFile(file string) []int64 {
 	}
 
 	return input
+}
+
+func ReadStringInputFile(file string) []string {
+	f, _ := os.Open(file)
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+
+	var line []string
+	for scanner.Scan() {
+		line = append(line, strings.TrimRight(scanner.Text(), "\n"))
+	}
+	return line
 }

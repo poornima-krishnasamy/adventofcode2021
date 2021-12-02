@@ -18,7 +18,7 @@ func countIncreased(input []int64) int64 {
 }
 
 func main() {
-	input := utils.ReadInputFile("input.txt")
+	input := utils.ReadIntInputFile("input.txt")
 
 	fmt.Println("Count of Increased -", countIncreased(input))
 	var windowedInput []int64
