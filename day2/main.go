@@ -4,12 +4,8 @@ import (
 	"aofc2021/utils"
 	_ "embed"
 	"fmt"
-	"strconv"
 	"strings"
 )
-
-//go:embed input.txt
-var allPositions string
 
 func main() {
 
@@ -27,14 +23,14 @@ func part1(allPositions []string) int {
 
 	for _, position := range allPositions {
 		step := strings.Fields(position)
-
+		value := utils.ToInt(step[1])
 		switch step[0] {
 		case "forward":
-			horizontal += toInt(step[1])
+			horizontal += value
 		case "down":
-			depth += toInt(step[1])
+			depth += value
 		case "up":
-			depth -= toInt(step[1])
+			depth -= value
 		}
 	}
 	return horizontal * depth
@@ -47,7 +43,7 @@ func part2(allPositions []string) int {
 
 	for _, position := range allPositions {
 		step := strings.Fields(position)
-		value := toInt(step[1])
+		value := utils.ToInt(step[1])
 		switch step[0] {
 		case "forward":
 			horizontal += value
@@ -59,12 +55,4 @@ func part2(allPositions []string) int {
 		}
 	}
 	return horizontal * depth
-}
-
-func toInt(input string) int {
-	value, err := strconv.Atoi(input)
-	if err != nil {
-		panic(err)
-	}
-	return value
 }

@@ -34,3 +34,19 @@ func ReadStringInputFile(file string) []string {
 	}
 	return line
 }
+
+func ToInt(input string) int {
+	value, err := strconv.Atoi(input)
+	if err != nil {
+		panic(err)
+	}
+	return value
+}
+
+func FromBinStringToInt(s string) int {
+	i, err := strconv.ParseInt(s, 2, 64)
+	if err != nil {
+		panic(err)
+	}
+	return int(i)
+}
